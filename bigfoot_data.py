@@ -32,3 +32,16 @@ year_data = df['year'].value_counts(ascending=True, sort=True).plot.area(color='
 plt.title("Year of the Yeti")
 plt.grid(True, color='#779CDB')
 plt.show()  
+
+#This code returns a graph that shows the top 5 states for sighitngs 
+state_data= df['state'].value_counts().nlargest(5).plot.barh(color=["#E0BBE4", "#957DAD", "#D291BC", "#FEC8D8", "#FFDFD3"])
+plt.xlabel('Number of Sighitngs')
+plt.title('Top 5 States by Sightings')
+plt.show()
+
+#This code returns a graph that shows the bottom 5 states for sighitngs 
+state_data= df['state'].value_counts().nsmallest(5).plot.barh(color=["#FBD0C3", "#BA8FDB", "#D291BC", "#F7F0CC", "#BBDBAB"])
+plt.xlabel('Number of Sighitngs')
+plt.xlim(3,20)
+plt.title('Lowest 5 States by Sightings')
+plt.show()
