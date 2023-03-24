@@ -1,8 +1,7 @@
-# bigfoot_sightings data visualizations. 
+# Bigfoot Data Project
 
 ![Getting Started](images/cool_pic.png)
 
-## data relating to eye witness accounts of 'squatches and otherwise hairy or out-of-focus bipeds 
 
 ### The Mission Statement
 
@@ -13,10 +12,22 @@ to locate our subject. We will also explore sighitngs over several decades to an
 It is my hope that with this scientific and graphical analysis we can finally locate this rare and evasive cryptid and finally put to bed this 
 age-old question. 
 
+#### Libraries Needed
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#### Read in CSV code
+df = pd.read_csv('data_main/merged_data.csv')
+
+For each of my visualizations, I pulled from different columns within my CSV. This file itself was the merger of three different sets of data. This was done within excel. I went through and cleaned various 
+aspects of the data, such as cells formatted to 'numbers' rather than dates. Typos, ranges of dates, 
+misspellings, swapped rows etc. were all part of the cleaning process as well. 
+
 #Data Project Requirements 
 1.) Loaded in my csv data with pandas 
-2.) Used the .drop() funciton to clean data in second visualization
-3.)
+2.) Used the .drop() funciton to clean data in second visualization, eliminating values that don't fit.
+3.)Used nsmallest() and nlargest()
 4.)
 5.)
 6.)
@@ -46,3 +57,11 @@ This area graph displays the frequency of sightings over the years. We have data
 This chart seems to say that sightings peaked in the mid 2000's and has fallen since then. The 60's to the 90's show a steady increase in sightings. By the 2010's Bigfoot is 
 becoming more difficult to glimpse than the decade prior. The 2020's have seen a return to 90's level encounters. It is speculated that the Sars-CoV-2 pandemic early in this decade 
 contributed to scarcity of sighitngs. Professional social-distancers, Sasquatch populations likely were unaffected by the global health emergency. 
+
+![Getting Started](images/highest.png)
+
+### Analysis
+
+![Getting Started](images/lowest.png)
+
+### Analysis
