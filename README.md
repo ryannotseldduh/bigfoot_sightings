@@ -30,6 +30,7 @@ df.tail(5)
 The above code allows us to make sure it's reading our entire document. When you return this text it looks like a mess for the head. Columns B and C, 'observed' and 'location_details' respectively contain text descriptions, basically anecdotes about what was seen and what the scene looked like. These columns are dropped from the dataframe as they hae no use for our purposes. This was done in the first instance of reading the csv via .drop(columns=) 
 
 ##### df.head(10)
+```python
 	county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
 0	Winston County	Alabama	Summer	Wednesday	10-Nov	2021.0	NaN	NaN	1.00
 1	Valdez-Chitina-Whittier County	Alaska	Fall	Saturday	23-Nov	2021.0	NaN	NaN	0.99
@@ -41,14 +42,17 @@ The above code allows us to make sure it's reading our entire document. When you
 7	Westchester County	New York	Fall	Saturday	23-Oct	2021.0	92.24	69.38	0.99
 8	Washoe County	Nevada	Fall	Saturday	23-Oct	2021.0	NaN	NaN	0.99
 9	Warren County	New Jersey	Fall	Friday	23-Oct	2021.0	NaN	NaN	0.99
+```
  
 ##### df.tail(5)
+```python
 	county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
 14751	Rio Arriba County	New Mexico	Summer	NaN	NaN	NaN	NaN	NaN	NaN
 14752	Prince George's County	Maryland	Spring	NaN	NaN	NaN	NaN	NaN	NaN
 14753	Lake County	Florida	Summer	NaN	NaN	NaN	NaN	NaN	NaN
 14754	White County	Illinois	Fall	NaN	NaN	NaN	NaN	NaN	NaN
 14755	Calhoun County	Illinois	Summer	NaN	NaN	NaN	NaN	NaN	NaN
+```
 
 
 
@@ -71,16 +75,16 @@ df['temperature_low'].mean()
 
 #Data Project Requirements 
 1.) Loaded in my csv data with pandas 
-2.) Used the .drop() funciton to clean data in second visualization, eliminating Unknown values
-3.) Used nsmallest() and nlargest() to target specific values
-4.) Used .drop() in the context of the original CSV read
-5.) .describe() used to pull information relating to that column 
-6.)
-7.)
+2.) Used .drop() in the context of the original CSV read to remove unwanted columns
+3.) Use df.head and tail to ensure entire file is read wihtout unwanted information
+4.) Used nsmallest() and nlargest() to target specific values
+5.) Used the .drop() funciton to clean data in second visualization, eliminating Unknown values
+6.) .describe() used to pull information relating to county column 
+7.) used .mean() to analyze average high and low temperatures
 
 
 # The Visuals 
-![Getting Started](images/IMG_6833.tiff)
+![Getting Started](images/pie.png)
 ### Analysis
 This pie chart shows us that you are scientifically most likely to encounter Bigfoot on a Sunday. Presently we are unsure whether to interpret 
 this as a consequence of any religious affiliation that the mysterious crypitd might have, but with more studies that may be determined. Saturday
@@ -106,7 +110,10 @@ contributed to scarcity of sighitngs. Professional social-distancers, Sasquatch 
 ![Getting Started](images/highest.png)
 
 ### Analysis
+This chart gives us the most popular states for Bigfoot viewing. The pacific nortwest seems to be a very well-represented region. We have the forests of Washington state in the top spot. Interestingly, Ohio is third most popular, an area that we don't necesserially associate with Bigfoot in the popular imagination. Floida's Skunkape is a Bigfoot variation many don't know about outside the region. This 
+version of the cryptid is often said to be sighited in the many bogs and swamps of the American southeast. 
 
 ![Getting Started](images/lowest.png)
 
 ### Analysis
+This chart shows us the states where you're least likely to encounter a Sasquatch. Don't buy a plane ticket to North Dakota is you're on the hunt. Of the least represented states, Vermont is your best option, but don't waste your time. 
