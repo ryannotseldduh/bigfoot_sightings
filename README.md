@@ -28,10 +28,13 @@ df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed',
 
 ### Cleaning File
 
+```python
 df.head(10)
 df.tail(5)
+```
 
 The above code allows us to make sure it's reading our entire document. When you return this text it looks like a mess for the head. Columns B and C, 'observed' and 'location_details' respectively contain text descriptions, basically anecdotes about what was seen and what the scene looked like. These columns are dropped from the dataframe as they hae no use for our purposes. This was done in the first instance of reading the csv via .drop(columns=) 
+
 
 ##### df.head(10)
 ```python
@@ -85,6 +88,7 @@ df['temperature_low'].mean()
 ```
 
 
+```python
 #Data Project Requirements 
 1.) Loaded in my csv data with pandas 
 2.) Used .drop() in the context of the original CSV read to remove unwanted columns
@@ -93,6 +97,7 @@ df['temperature_low'].mean()
 5.) Used the .drop() funciton to clean data in second visualization, eliminating Unknown values
 6.) .describe() used to pull information relating to county column 
 7.) used .mean() to analyze average high and low temperatures
+```
 
 
 # The Visuals 
