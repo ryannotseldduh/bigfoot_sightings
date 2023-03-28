@@ -13,12 +13,16 @@ It is my hope that with this scientific and graphical analysis we can finally lo
 age-old question. 
 
 ### Libraries Needed
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+```
 
 ### Read in CSV code
-df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
+```python
+df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])	
+```
 
 
 
@@ -57,20 +61,28 @@ The above code allows us to make sure it's reading our entire document. When you
 
 
 ### Getting county information
+```python
 df['county'].describe()
+```
 
+```python
 count             10042
 unique             1037
 top       Pierce County
 freq                152
 Name: county, dtype: object
+```
 
 ### Using functions from the statistics module to get information
+```python
 df['temperature_high'].mean()
 67.11769322947873
+```
 
+```python
 df['temperature_low'].mean()
 48.63876763875823 
+```
 
 
 #Data Project Requirements 
