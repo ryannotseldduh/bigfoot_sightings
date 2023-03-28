@@ -78,7 +78,7 @@ df.replace(np.NaN, 'No info')
 14755	Calhoun County	Illinois	Summer	No info	No info	No info	No info	No info	No info
 ```
 
-Then here we are converting out column moon_phase, which shows the fullness of the moon, 0.01 is very crescent, 1 is a full moon, into a percentage I think that's easier to understand
+Then here we are converting our column moon_phase, which shows the fullness of the moon, 0.01 is very crescent, 1 is a full moon, into a percentage I think that's easier to understand
 
 df['moon_phase'].map(lambda n: '{:,.2%}'.format(n))
 
@@ -88,30 +88,6 @@ df['moon_phase'].map(lambda n: '{:,.2%}'.format(n))
 2         99.00%
 3         99.00%
 4         99.00%
-```
-
-Was just curious which of these came up the most so I used to mode() function
-
-df['moon_phase'].mode()
-
-```python
-0.58
-```
-
-
-```python
-county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
-0	Winston County	Alabama	Summer	Wednesday	10-Nov	2021.0	No info	No info	1.0
-1	Valdez-Chitina-Whittier County	Alaska	Fall	Saturday	23-Nov	2021.0	No info	No info	0.99
-2	Washington County	Rhode Island	Fall	Sunday	23-Nov	2021.0	78.17	68.68	0.99
-3	York County	Pennsylvania	Summer	Monday	23-Nov	2021.0	No info	No info	0.99
-4	Yamhill County	Oregon	Spring	Sunday	23-Nov	2021.0	No info	No info	0.99
-...	...	...	...	...	...	...	...	...	...
-14751	Rio Arriba County	New Mexico	Summer	No info	No info	No info	No info	No info	No info
-14752	Prince George's County	Maryland	Spring	No info	No info	No info	No info	No info	No info
-14753	Lake County	Florida	Summer	No info	No info	No info	No info	No info	No info
-14754	White County	Illinois	Fall	No info	No info	No info	No info	No info	No info
-14755	Calhoun County	Illinois	Summer	No info	No info	No info	No info	No info	No info
 ```
 
 
@@ -137,6 +113,12 @@ df['temperature_high'].mean()
 ```python
 df['temperature_low'].mean()
 48.63876763875823 
+```
+
+df['moon_phase'].mode()
+
+```python
+0.58
 ```
 
 
