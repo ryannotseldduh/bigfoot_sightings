@@ -3,7 +3,7 @@
 ![Getting Started](images/cool_pic.png)
 
 
-### The Mission Statement
+## The Mission Statement
 
 This project is an attempt to assist the cryptozoology community in their hunt for the elusive and legendary creature- Bigfoot. 
 With the data provided by eyewitness accounts, I have created visualizations that these intrepid explorers and hunters can use to ascertain 
@@ -12,24 +12,69 @@ to locate our subject. We will also explore sighitngs over several decades to an
 It is my hope that with this scientific and graphical analysis we can finally locate this rare and evasive cryptid and finally put to bed this 
 age-old question. 
 
-#### Libraries Needed
+### Libraries Needed
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#### Read in CSV code
-df = pd.read_csv('data_main/merged_data.csv')
+### Read in CSV code
+df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
 
-For each of my visualizations, I pulled from different columns within my CSV. This file itself was the merger of three different sets of data. This was done within excel. I went through and cleaned various 
-aspects of the data, such as cells formatted to 'numbers' rather than dates. Typos, ranges of dates, 
-misspellings, swapped rows etc. were all part of the cleaning process as well. 
+
+
+### Cleaning File
+
+df.head(10)
+df.tail(5)
+
+The above code allows us to make sure it's reading our entire document. When you return this text it looks like a mess for the head. Columns B and C, 'observed' and 'location_details' respectively contain text descriptions, basically anecdotes about what was seen and what the scene looked like. These columns are dropped from the dataframe as they hae no use for our purposes. This was done in the first instance of reading the csv via .drop(columns=) 
+
+##### df.head(10)
+	county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
+0	Winston County	Alabama	Summer	Wednesday	10-Nov	2021.0	NaN	NaN	1.00
+1	Valdez-Chitina-Whittier County	Alaska	Fall	Saturday	23-Nov	2021.0	NaN	NaN	0.99
+2	Washington County	Rhode Island	Fall	Sunday	23-Nov	2021.0	78.17	68.68	0.99
+3	York County	Pennsylvania	Summer	Monday	23-Nov	2021.0	NaN	NaN	0.99
+4	Yamhill County	Oregon	Spring	Sunday	23-Nov	2021.0	NaN	NaN	0.99
+5	Washita County	Oklahoma	Fall	Monday	23-Nov	2021.0	71.86	50.99	0.99
+6	Washington County	Ohio	Summer	Monday	23-Nov	2021.0	NaN	NaN	0.99
+7	Westchester County	New York	Fall	Saturday	23-Oct	2021.0	92.24	69.38	0.99
+8	Washoe County	Nevada	Fall	Saturday	23-Oct	2021.0	NaN	NaN	0.99
+9	Warren County	New Jersey	Fall	Friday	23-Oct	2021.0	NaN	NaN	0.99
+ 
+##### df.tail(5)
+	county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
+14751	Rio Arriba County	New Mexico	Summer	NaN	NaN	NaN	NaN	NaN	NaN
+14752	Prince George's County	Maryland	Spring	NaN	NaN	NaN	NaN	NaN	NaN
+14753	Lake County	Florida	Summer	NaN	NaN	NaN	NaN	NaN	NaN
+14754	White County	Illinois	Fall	NaN	NaN	NaN	NaN	NaN	NaN
+14755	Calhoun County	Illinois	Summer	NaN	NaN	NaN	NaN	NaN	NaN
+
+
+
+### Getting county information
+df['county'].describe()
+
+count             10042
+unique             1037
+top       Pierce County
+freq                152
+Name: county, dtype: object
+
+### Using functions from the statistics module to get information
+df['temperature_high'].mean()
+67.11769322947873
+
+df['temperature_low'].mean()
+48.63876763875823 
+
 
 #Data Project Requirements 
 1.) Loaded in my csv data with pandas 
-2.) Used the .drop() funciton to clean data in second visualization, eliminating values that don't fit.
-3.)Used nsmallest() and nlargest()
-4.)
-5.)
+2.) Used the .drop() funciton to clean data in second visualization, eliminating Unknown values
+3.) Used nsmallest() and nlargest() to target specific values
+4.) Used .drop() in the context of the original CSV read
+5.) .describe() used to pull information relating to that column 
 6.)
 7.)
 
