@@ -4,10 +4,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Here's where my I'm pulling my data from
-df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
 
-#Cleaning process
+# Here's where my I'm pulling my data from
+
+df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
 
 # This shows us our data frame minus some columns that affect how readable the information is. 
 
@@ -15,11 +15,27 @@ df.head(10)
 
 df.tail(10)
 
+# These functions reveal information about the portion of the data frame we focus them on
+
 df['county'].describe()
 
 df['temperature_high'].mean()
 
 df['temperature_low'].mean()
+
+# Cleaning Process
+
+#replaces the Nan cells with 'No info' 
+
+df.replace(np.NaN, 'No info')
+
+#Converts the moon phases from numeric to percentages 
+
+df['moon_phase'].map(lambda n: '{:,.2%}'.format(n))
+
+# Wanted to know which of these came up the most 
+
+df['moon_phase'].mode()
 
 
 # This should return a pie chart that tells us the day of the week most spotters 

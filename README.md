@@ -12,21 +12,18 @@ to locate our subject. We will also explore sighitngs over several decades to an
 It is my hope that with this scientific and graphical analysis we can finally locate this rare and evasive cryptid and finally put to bed this 
 age-old question. 
 
-### Libraries Needed
+## Libraries Needed
 ```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-### Read in CSV code
+## Read in CSV code
 ```python
 df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])	
 ```
 
-
-
-### Cleaning File
 
 ```python
 df.head(10)
@@ -61,6 +58,61 @@ The above code allows us to make sure it's reading our entire document. When you
 14755	Calhoun County	Illinois	Summer	NaN	NaN	NaN	NaN	NaN	NaN
 ```
 
+### Cleaning Data
+Here we want to manipulate some of this information. We'll start by getting rid of the NaN values that exist in our dataframe.
+
+df.replace(np.NaN, 'No info')
+
+```python
+	county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
+0	Winston County	Alabama	Summer	Wednesday	10-Nov	2021.0	No info	No info	1.0
+1	Valdez-Chitina-Whittier County	Alaska	Fall	Saturday	23-Nov	2021.0	No info	No info	0.99
+2	Washington County	Rhode Island	Fall	Sunday	23-Nov	2021.0	78.17	68.68	0.99
+3	York County	Pennsylvania	Summer	Monday	23-Nov	2021.0	No info	No info	0.99
+4	Yamhill County	Oregon	Spring	Sunday	23-Nov	2021.0	No info	No info	0.99
+...	...	...	...	...	...	...	...	...	...
+14751	Rio Arriba County	New Mexico	Summer	No info	No info	No info	No info	No info	No info
+14752	Prince George's County	Maryland	Spring	No info	No info	No info	No info	No info	No info
+14753	Lake County	Florida	Summer	No info	No info	No info	No info	No info	No info
+14754	White County	Illinois	Fall	No info	No info	No info	No info	No info	No info
+14755	Calhoun County	Illinois	Summer	No info	No info	No info	No info	No info	No info
+```
+
+Then here we are converting out column moon_phase, which shows the fullness of the moon, 0.01 is very crescent, 1 is a full moon, into a percentage I think that's easier to understand
+
+df['moon_phase'].map(lambda n: '{:,.2%}'.format(n))
+
+```python
+0        100.00%
+1         99.00%
+2         99.00%
+3         99.00%
+4         99.00%
+```
+
+Was just curious which of these came up the most so I used to mode() function
+
+df['moon_phase'].mode()
+
+```python
+0.58
+```
+
+
+```python
+county	state	season	day_of_the_week	date	year	temperature_high	temperature_low	moon_phase
+0	Winston County	Alabama	Summer	Wednesday	10-Nov	2021.0	No info	No info	1.0
+1	Valdez-Chitina-Whittier County	Alaska	Fall	Saturday	23-Nov	2021.0	No info	No info	0.99
+2	Washington County	Rhode Island	Fall	Sunday	23-Nov	2021.0	78.17	68.68	0.99
+3	York County	Pennsylvania	Summer	Monday	23-Nov	2021.0	No info	No info	0.99
+4	Yamhill County	Oregon	Spring	Sunday	23-Nov	2021.0	No info	No info	0.99
+...	...	...	...	...	...	...	...	...	...
+14751	Rio Arriba County	New Mexico	Summer	No info	No info	No info	No info	No info	No info
+14752	Prince George's County	Maryland	Spring	No info	No info	No info	No info	No info	No info
+14753	Lake County	Florida	Summer	No info	No info	No info	No info	No info	No info
+14754	White County	Illinois	Fall	No info	No info	No info	No info	No info	No info
+14755	Calhoun County	Illinois	Summer	No info	No info	No info	No info	No info	No info
+```
 
 
 ### Getting county information
@@ -92,10 +144,10 @@ df['temperature_low'].mean()
 #Data Project Requirements 
 1.) Loaded in my csv data with pandas 
 2.) Used .drop() in the context of the original CSV read to remove unwanted columns
-3.) Use df.head and tail to ensure entire file is read wihtout unwanted information
+3.) Used the .replace() function to get rid of NaN and replace with 'No info'
 4.) Used nsmallest() and nlargest() to target specific values
 5.) Used the .drop() funciton to clean data in second visualization, eliminating Unknown values
-6.) .describe() used to pull information relating to county column 
+6.) Formated 'moon_phase' column into percentages
 7.) used .mean() to analyze average high and low temperatures
 ```
 
