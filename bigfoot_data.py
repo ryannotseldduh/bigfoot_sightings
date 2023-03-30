@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # Here's where my I'm pulling my data from
 
-df = pd.read_csv('data_main/merged_data.csv').drop(columns=['count', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
+df = pd.read_csv('data_main/merged_data.csv').drop(columns=['cnt', 'observed','location_details', 'title', 'pressure', 'summary', 'uv_index', 'visibility', 'wind_bearing','wind_speed', 'temperature_mid', 'dew_point','humidity','cloud_cover','precip_intensity','precip_probability','precip_type', 'latitude', 'longitude', 'geohash'])
 
 # This shows us our data frame minus some columns that affect how readable the information is. 
 
@@ -59,9 +59,7 @@ plt.show()
 
 #What happened in the 2000's?
 
-year_data = df['year'].value_counts(ascending=True, sort=True).plot.area(color='#FEC1C1', xlabel='Years', ylabel="number of sightings").set_xlim(1960,2022)
-plt.title("Year of the Yeti")
-plt.grid(True, color='#779CDB')
+year_data = df['year'].value_counts().sort_index().plot(kind='area',color='#FEC1C1', xlabel='Years', ylabel='Number of Sightings', title='Year of the Yeti', grid=True)
 plt.show()  
 
 #This code returns a graph that shows the top 5 states for sighitngs 
